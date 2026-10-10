@@ -1,6 +1,6 @@
 # GPU Roofline Performance Model
 
-How fast *should* a GPU kernel be, and why isn't it that fast? This project measures the real limits of a GPU with microbenchmarks, builds a roofline model from them, and uses it to explain the performance of my hand-written CUDA kernels from [cuda-transformer-kernels](https://github.com/YOUR-USERNAME/cuda-transformer-kernels).
+How fast *should* a GPU kernel be, and why isn't it that fast? This project measures the real limits of a GPU with microbenchmarks, builds a roofline model from them, and uses it to explain the performance of my hand-written CUDA kernels from [cuda-transformer-kernels](https://github.com/Synide586/CUDA-Kernals-for-Transformer-ops).
 
 ## The roofline idea
 
@@ -33,7 +33,6 @@ Results on a Tesla T4:
 
 The ridge point is about **27 FLOPs per DRAM byte**: below it a kernel is limited by memory, above it by compute.
 
-![Bandwidth vs working set](results/bandwidth_sweep.png)
 
 The sweep shows the cache hierarchy directly: about 1.2 TB/s while the data fits in the 4 MB L2, then a drop to about 270 GB/s once it has to come from DRAM.
 
@@ -44,11 +43,9 @@ Two lessons from building these benchmarks:
 
 ## Part 2: the model
 
-For each kernel from [cuda-transformer-kernels](https://github.com/YOUR-USERNAME/cuda-transformer-kernels), `scripts/model.py` counts the FLOPs and the bytes moved at each level of the memory hierarchy (DRAM, L2, L1/shared), predicts the time each level needs from the measured ceilings, and takes the slowest one as the bound. Comparing that bound with the measured time shows how close each kernel gets and what limits it.
+For each kernel from [cuda-transformer-kernels](https://github.com/Synide586/CUDA-Kernals-for-Transformer-ops), `scripts/model.py` counts the FLOPs and the bytes moved at each level of the memory hierarchy (DRAM, L2, L1/shared), predicts the time each level needs from the measured ceilings, and takes the slowest one as the bound. Comparing that bound with the measured time shows how close each kernel gets and what limits it.
 
 Shared-memory and L1 traffic is counted as 128 bytes per warp access to one cache line, assuming no bank conflicts. The measured times are in `data/project1/`.
-
-![Roofline](results/roofline.png)
 
 Results at N = 4096 (GEMM and attention) and 8192 x 1024 (softmax, LayerNorm):
 
@@ -137,7 +134,7 @@ The counters pointed at two problems in the register-blocked GEMM: 33.6 million 
 
 ## How to run (Google Colab, T4 GPU)
 
-Parts 1 and 2 run on their own. Part 3 profiles the kernels from [cuda-transformer-kernels](https://github.com/YOUR-USERNAME/cuda-transformer-kernels), so clone both repositories side by side:
+Parts 1 and 2 run on their own. Part 3 profiles the kernels from [cuda-transformer-kernels](https://github.com/Synide586/CUDA-Kernals-for-Transformer-ops), so clone both repositories side by side:
 
 ```bash
 !git clone https://github.com/YOUR-USERNAME/cuda-transformer-kernels
