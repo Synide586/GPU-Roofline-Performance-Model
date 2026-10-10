@@ -1,0 +1,9 @@
+name,unit,measured,theoretical
+fp32_fma,GFLOP/s,7504.48,8140.80
+implied_sm_clock,GHz,1.47,1.59
+dram_read,GB/s,278.89,320.06
+dram_write,GB/s,230.96,320.06
+dram_copy,GB/s,229.21,320.06
+dram_triad,GB/s,239.62,320.06
+l2_read,GB/s,1192.96,0.00
+smem_read,GB/s,4000.27,4070.40

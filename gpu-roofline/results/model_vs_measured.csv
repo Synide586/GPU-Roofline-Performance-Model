@@ -1,0 +1,105 @@
+group,kernel,shape,bound,predicted_ms,measured_ms,pct_of_bound
+gemm,naive_uncoalesced,N=256,L1/shared,0.5536,1.1910,46.5
+gemm,naive_coalesced,N=256,L1/shared,0.0336,0.0850,39.5
+gemm,smem_tiled,N=256,L1/shared,0.0336,0.0700,47.9
+gemm,2d_blocktiling,N=256,compute,0.0045,0.1280,3.5
+gemm,cublas,N=256,compute,0.0045,0.0330,13.5
+gemm,naive_uncoalesced,N=512,L1/shared,4.4289,4.7690,92.9
+gemm,naive_coalesced,N=512,L1/shared,0.2684,0.3380,79.4
+gemm,smem_tiled,N=512,L1/shared,0.2684,0.3050,88.0
+gemm,2d_blocktiling,N=512,compute,0.0358,0.1500,23.8
+gemm,cublas,N=512,compute,0.0358,0.0490,73.0
+gemm,naive_uncoalesced,N=1024,L1/shared,35.4311,35.5490,99.7
+gemm,naive_coalesced,N=1024,L1/shared,2.1473,3.4000,63.2
+gemm,smem_tiled,N=1024,L1/shared,2.1473,2.3810,90.2
+gemm,2d_blocktiling,N=1024,compute,0.2862,0.7070,40.5
+gemm,cublas,N=1024,compute,0.2862,0.3830,74.7
+gemm,naive_uncoalesced,N=2048,L1/shared,283.4487,277.8750,102.0
+gemm,naive_coalesced,N=2048,L1/shared,17.1787,28.6150,60.0
+gemm,smem_tiled,N=2048,L1/shared,17.1787,19.1010,89.9
+gemm,2d_blocktiling,N=2048,compute,2.2893,5.1280,44.6
+gemm,cublas,N=2048,compute,2.2893,3.9380,58.1
+gemm,naive_uncoalesced,N=4096,L1/shared,2267.5897,2215.2150,102.4
+gemm,naive_coalesced,N=4096,L1/shared,137.4297,232.1630,59.2
+gemm,smem_tiled,N=4096,L1/shared,137.4297,152.7830,90.0
+gemm,2d_blocktiling,N=4096,compute,18.3143,40.6600,45.0
+gemm,cublas,N=4096,compute,18.3143,32.0490,57.1
+softmax,softmax_block,8192x128,DRAM,0.0350,0.1360,25.7
+softmax,softmax_warp_online,8192x128,DRAM,0.0350,0.0390,89.8
+softmax,softmax_warp_reg,8192x128,DRAM,0.0350,0.0360,97.2
+layernorm,layernorm_block,8192x128,DRAM,0.0350,0.1420,24.7
+layernorm,layernorm_warp_reg,8192x128,DRAM,0.0350,0.0370,94.6
+softmax,torch_softmax,8192x128,DRAM,0.0350,0.0380,92.1
+layernorm,torch_layernorm,8192x128,DRAM,0.0350,0.1330,26.3
+softmax,softmax_block,8192x256,DRAM,0.0700,0.1000,70.0
+softmax,softmax_warp_online,8192x256,DRAM,0.0700,0.0720,97.2
+softmax,softmax_warp_reg,8192x256,DRAM,0.0700,0.0710,98.6
+layernorm,layernorm_block,8192x256,DRAM,0.0700,0.1030,68.0
+layernorm,layernorm_warp_reg,8192x256,DRAM,0.0700,0.0720,97.2
+softmax,torch_softmax,8192x256,DRAM,0.0700,0.0720,97.2
+layernorm,torch_layernorm,8192x256,DRAM,0.0700,0.1530,45.8
+softmax,softmax_block,8192x512,DRAM,0.1400,0.1510,92.7
+softmax,softmax_warp_online,8192x512,DRAM,0.1400,0.1880,74.5
+softmax,softmax_warp_reg,8192x512,DRAM,0.1400,0.1470,95.3
+layernorm,layernorm_block,8192x512,DRAM,0.1400,0.1500,93.4
+layernorm,layernorm_warp_reg,8192x512,DRAM,0.1400,0.1470,95.3
+softmax,torch_softmax,8192x512,DRAM,0.1400,0.1430,97.9
+layernorm,torch_layernorm,8192x512,DRAM,0.1400,0.2020,69.3
+softmax,softmax_block,8192x768,DRAM,0.2100,0.2130,98.6
+softmax,softmax_warp_online,8192x768,DRAM,0.2100,0.3050,68.9
+softmax,softmax_warp_reg,8192x768,DRAM,0.2100,0.2250,93.4
+layernorm,layernorm_block,8192x768,DRAM,0.2100,0.2150,97.7
+layernorm,layernorm_warp_reg,8192x768,DRAM,0.2100,0.2200,95.5
+softmax,torch_softmax,8192x768,DRAM,0.2100,0.2190,95.9
+layernorm,torch_layernorm,8192x768,DRAM,0.2100,0.2760,76.1
+softmax,softmax_block,8192x1024,DRAM,0.2801,0.2870,97.6
+softmax,softmax_warp_online,8192x1024,DRAM,0.2801,0.4130,67.8
+softmax,softmax_warp_reg,8192x1024,DRAM,0.2801,0.3010,93.0
+layernorm,layernorm_block,8192x1024,DRAM,0.2801,0.2870,97.6
+layernorm,layernorm_warp_reg,8192x1024,DRAM,0.2801,0.2960,94.6
+softmax,torch_softmax,8192x1024,DRAM,0.2801,0.3000,93.4
+layernorm,torch_layernorm,8192x1024,DRAM,0.2801,0.3220,87.0
+softmax,softmax_block,8192x2048,DRAM,0.5601,0.6020,93.0
+softmax,softmax_warp_online,8192x2048,DRAM,0.5601,0.8320,67.3
+layernorm,layernorm_block,8192x2048,DRAM,0.5601,0.6050,92.6
+softmax,torch_softmax,8192x2048,DRAM,0.5601,0.6050,92.6
+layernorm,torch_layernorm,8192x2048,DRAM,0.5601,0.7730,72.5
+softmax,softmax_block,8192x4096,DRAM,1.1203,1.4480,77.4
+softmax,softmax_warp_online,8192x4096,DRAM,1.1203,1.6650,67.3
+layernorm,layernorm_block,8192x4096,DRAM,1.1203,1.4430,77.6
+softmax,torch_softmax,8192x4096,DRAM,1.1203,1.0880,103.0
+layernorm,torch_layernorm,8192x4096,DRAM,1.1203,1.6110,69.5
+attention,unfused_cublas,N=512,DRAM+DRAM+DRAM,0.3151,0.4880,64.6
+attention,flash_v1,N=512,L1/shared,0.5368,1.0670,50.3
+attention,flash_v2,N=512,L1/shared,0.2684,0.5670,47.3
+attention,unfused_cublas,N=512 causal,DRAM+DRAM+DRAM,0.3151,0.3830,82.3
+attention,flash_v1,N=512 causal,L1/shared,0.2689,0.7170,37.5
+attention,flash_v2,N=512 causal,L1/shared,0.1510,0.2760,54.7
+attention,unfused_cublas,N=1024,DRAM+DRAM+DRAM,1.1903,1.8630,63.9
+attention,flash_v1,N=1024,L1/shared,2.1473,3.1730,67.7
+attention,flash_v2,N=1024,L1/shared,1.0737,1.5990,67.1
+attention,unfused_cublas,N=1024 causal,DRAM+DRAM+DRAM,1.1903,1.6630,71.6
+attention,flash_v1,N=1024 causal,L1/shared,1.0747,1.9550,55.0
+attention,flash_v2,N=1024 causal,L1/shared,0.5704,0.8240,69.2
+attention,unfused_cublas,N=2048,DRAM+DRAM+DRAM,4.6211,7.5520,61.2
+attention,flash_v1,N=2048,L1/shared,8.5894,10.3320,83.1
+attention,flash_v2,N=2048,L1/shared,4.2947,6.2020,69.2
+attention,unfused_cublas,N=2048 causal,DRAM+DRAM+DRAM,4.6211,6.6970,69.0
+attention,flash_v1,N=2048 causal,L1/shared,4.2968,5.5100,78.0
+attention,flash_v2,N=2048 causal,L1/shared,2.2144,3.3240,66.6
+attention,unfused_cublas,N=4096,DRAM+DRAM+DRAM,18.2041,32.6860,55.7
+attention,flash_v1,N=4096,L1/shared,34.3574,38.0660,90.3
+attention,flash_v2,N=4096,L1/shared,17.1787,24.9400,68.9
+attention,unfused_cublas,N=4096 causal,DRAM+DRAM+DRAM,18.2041,28.6590,63.5
+attention,flash_v1,N=4096 causal,L1/shared,17.1829,18.4050,93.4
+attention,flash_v2,N=4096 causal,L1/shared,8.7236,12.7010,68.7
+attention,unfused_cublas,N=8192,compute+DRAM+compute,72.4767,165.8690,43.7
+attention,flash_v1,N=8192,L1/shared,137.4297,151.7900,90.5
+attention,flash_v2,N=8192,L1/shared,68.7148,101.9250,67.4
+attention,unfused_cublas,N=8192 causal,compute+DRAM+compute,72.4767,130.0110,55.7
+attention,flash_v1,N=8192 causal,L1/shared,68.7232,68.3980,100.5
+attention,flash_v2,N=8192 causal,L1/shared,34.6258,49.7220,69.6
+attention,flash_v1,N=16384,L1/shared,549.7187,607.8130,90.4
+attention,flash_v2,N=16384,L1/shared,274.8594,407.7730,67.4
+attention,flash_v1,N=16384 causal,L1/shared,274.8761,289.0270,95.1
+attention,flash_v2,N=16384 causal,L1/shared,137.9665,203.3000,67.9
