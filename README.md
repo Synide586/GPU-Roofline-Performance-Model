@@ -137,8 +137,8 @@ The counters pointed at two problems in the register-blocked GEMM: 33.6 million 
 Parts 1 and 2 run on their own. Part 3 profiles the kernels from [cuda-transformer-kernels](https://github.com/Synide586/CUDA-Kernals-for-Transformer-ops), so clone both repositories side by side:
 
 ```bash
-!git clone https://github.com/YOUR-USERNAME/cuda-transformer-kernels
-!git clone https://github.com/YOUR-USERNAME/gpu-roofline
+!git clone https:https://github.com/Synide586/CUDA-Kernals-for-Transformer-ops
+!git clone https:https://github.com/Synide586/GPU-Roofline-Performance-Model
 !cd cuda-transformer-kernels && make
 %cd gpu-roofline
 ```
